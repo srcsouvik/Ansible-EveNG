@@ -1,0 +1,71 @@
+<<<<<<< HEAD
+---
+local_loopbacks:
+    - name: Loopback11
+      desc: Sample Network Route Injection
+      ip_address: 172.21.1.1/24
+#      prefix: 24
+    - name: Loopback12
+      desc: Sample Network Route Injection
+      ip_address: 172.21.2.1/24
+#      prefix: 24
+    - name: Loopback10
+      desc: Sample Network Route Injection
+      ip_address: 10.10.10.10
+
+l3_fabric:
+    interfaces:
+        - name: Ethernet1/0
+          desc: L3 Link to R2
+          ip_address: 172.20.0.6/30
+         # prefix: 30
+        - name: Ethernet1/2
+          desc: L3 Link to R3
+          ip_address: 172.20.0.10/30
+         # prefix: 30
+ospf_router_id: 192.168.0.1
+ospf_networks:
+    - network: 172.20.0.0
+      mask: 0.0.0.255
+      area: 0
+    - network: 172.21.0.0
+      mask: 0.0.255.255
+      area: 0
+    - network: 192.168.1.1
+      mask: 0.0.0.0
+      area: 0
+=======
+---
+local_loopbacks:
+    - name: Loopback11
+      desc: Sample Network Route Injection
+      ip_address: 172.21.1.1/24
+#      prefix: 24
+    - name: Loopback12
+      desc: Sample Network Route Injection
+      ip_address: 172.21.2.1/24
+#      prefix: 24
+    - name: Loopback13
+      desc: Sample Network Route Injection
+      ip_address: 172.21.3.1/24
+#      prefix: 24
+    - name: Loopback14
+      desc: Sample Network Route Injection
+      ip_address: 172.21.4.1/24
+#      prefix: 24
+    - name: Loopback15
+      desc: Sample Network Route Injection
+      ip_address: 172.21.5.1/24
+#      prefix: 24
+
+l3_fabric:
+    interfaces:
+        - name: Ethernet1/0
+          desc: L3 Link to R2
+          ip_address: 172.20.0.6/30
+         # prefix: 30
+        - name: Ethernet1/2
+          desc: L3 Link to R3
+          ip_address: 172.20.0.10/30
+         # prefix: 30
+>>>>>>> ea69cd65cb9432bce2e6fc9e9bde4cb00fce49d7

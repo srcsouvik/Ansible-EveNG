@@ -1,0 +1,26 @@
+bgp:
+    as_number: '64496'
+    bgp:
+        log_neighbor_changes: true
+        router_id:
+            address: 192.0.2.1
+    neighbor:
+    -   address: 198.51.100.2
+        remote_as: 64498
+    -   address: 203.0.113.5
+        remote_as: 64511
+        timers:
+            holdtime: 360
+            interval: 300
+            min_holdtime: 360
+    -   activate: true
+        address: 198.51.100.2
+    -   activate: true
+        address: 203.0.113.5
+    redistribute:
+    -   ospf:
+            match:
+                type_1: true
+                type_2: true
+            metric: 10
+            process_id: 223

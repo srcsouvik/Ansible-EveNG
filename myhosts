@@ -1,0 +1,34 @@
+<<<<<<< HEAD
+[Group1]
+R1 ansible_host=10.2.2.10 ansible_python_interpreter="/usr/bin/env python"
+# R4 ansible_host=10.2.2.40 ansible_python_interpreter="/usr/bin/env python"
+[Group2]
+R2 ansible_host=10.2.2.20 ansible_python_interpreter="/usr/bin/env python"
+R3 ansible_host=10.2.2.30 ansible_python_interpreter="/usr/bin/env python"
+
+[MyLab:children]
+Group1
+Group2
+
+[MyLab:vars]
+ansible_connection=network_cli
+ansible_network_os=ios
+ansible_user=cisco
+ansible_password=cisco123
+=======
+[Group1]
+R1 ansible_host=10.2.2.10 ansible_python_interpreter="/usr/bin/env python"
+[Group2]
+R2 ansible_host=10.2.2.20 ansible_python_interpreter="/usr/bin/env python"
+R3 ansible_host=10.2.2.30 ansible_python_interpreter="/usr/bin/env python"
+
+[MyLab:children]
+Group1
+Group2
+
+[MyLab:vars]
+ansible_connection=network_cli
+ansible_network_os=ios
+ansible_user=cisco
+ansible_password=cisco123
+>>>>>>> ea69cd65cb9432bce2e6fc9e9bde4cb00fce49d7

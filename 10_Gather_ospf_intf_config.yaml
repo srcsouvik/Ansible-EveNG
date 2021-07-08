@@ -1,0 +1,21 @@
+
+---
+- name: convert ospf interface config to yaml structure data
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Create Inventory if not exists
+    file:
+     path: "{{ inventory_dir }}/host_vars/{{ inventory_hostname }}-ospf"
+     state: directory
+  - name: Gather ospf Interface Config
+    cisco.ios.ios_ospf_interfaces:
+      config:
+      state: gathered
+    register: ospf_intf
+
+  - name: Write the OSPF config to a file
+    copy: 
+      content: "{{ {'ospf_intf' : ospf_intf['gathered']} | to_nice_yaml }}"
+      dest: "{{ inventory_dir }}/host_vars/{{ inventory_hostname }}-ospf/ospf_intf.yaml"
+

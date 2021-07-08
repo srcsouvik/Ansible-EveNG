@@ -1,0 +1,182 @@
+Building configuration...
+
+Current configuration : 2258 bytes
+!
+version 12.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname RTR5-Ansible
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+memory-size iomem 5
+no ip icmp rate-limit unreachable
+ip cef
+!
+!
+!
+!
+no ip domain lookup
+ip domain name mylab.com
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+username cisco privilege 15 password 0 cisco123
+archive
+ log config
+  hidekeys
+! 
+!
+!
+!
+ip tcp synwait-time 5
+ip ssh version 2
+!
+!
+!
+!
+interface Loopback11
+ description Sample Network Route Injection
+ ip address 172.25.0.1 255.255.255.0
+!
+interface Loopback12
+ description Sample Network Route Injection
+ ip address 172.25.1.1 255.255.255.0
+!
+interface FastEthernet0/0
+ ip address 10.2.2.50 255.255.255.0
+ speed auto
+ full-duplex
+!
+interface Serial0/0
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface FastEthernet0/1
+ description L3 Link to R3
+ ip address 172.16.0.18 255.255.255.252
+ speed 100
+ half-duplex
+!
+interface Serial0/1
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface Serial0/2
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface Serial0/3
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface Serial0/4
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface Serial0/5
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface Serial1/0
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/1
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/2
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial1/3
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface FastEthernet2/0
+ description L3 Link to R6
+ ip address 172.16.0.25 255.255.255.252
+ speed 100
+ half-duplex
+!
+router ospf 1
+ router-id 5.5.5.5
+ log-adjacency-changes
+ network 5.5.5.5 0.0.0.0 area 0
+ network 172.16.0.0 0.0.0.255 area 0
+ network 172.25.0.0 0.0.1.255 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+no cdp log mismatch duplex
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line aux 0
+ exec-timeout 0 0
+ privilege level 15
+ logging synchronous
+line vty 0 4
+ login local
+ transport input all
+!
+!
+end

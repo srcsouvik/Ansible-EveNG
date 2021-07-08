@@ -1,0 +1,13 @@
+---
+- name: Network Getting Started - Backup of IOS Devices config
+  connection: network_cli
+  gather_facts: false
+  hosts: all
+  tasks:
+    - name: IOS Device Config Backup
+      become: yes
+      ios_config:
+        backup: yes
+        backup_options:
+          dir_path: "{{ inventory_dir }}/Backup/{{ inventory_hostname }}"
+          

@@ -1,0 +1,7 @@
+bgp:
+    as_number: '65000'
+    bgp:
+        log_neighbor_changes: true
+    neighbor:
+    -   address: 172.20.0.5
+        remote_as: 65000

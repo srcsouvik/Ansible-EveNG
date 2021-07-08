@@ -1,0 +1,6 @@
+router ospf 1
+ router-id 6.6.6.6
+  network 172.16.0.0 0.0.0.255 area 0
+  network 172.26.0.0 0.0.1.255 area 0
+  network 6.6.6.6 0.0.0.0 area 0
+ 

@@ -1,0 +1,8 @@
+---
+# tasks file for roles/config_backup
+- name: Backup of IOS Devices config
+  become: yes
+  ios_config:
+   backup: yes
+   backup_options:
+    dir_path: "{{ inventory_dir }}/Backup/{{ inventory_hostname }}"

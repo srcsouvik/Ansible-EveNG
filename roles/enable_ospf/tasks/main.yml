@@ -1,0 +1,33 @@
+---
+#- name: "Generate OSPF config"
+#  template:
+#    src: "files/ospf_template.j2"
+#    dest: "./config/{{inventory_hostname}}-ospf.txt"
+#- name: Push OSPF config to devices
+#  ios_config:
+#    host: "{{inventory_hostname}}"
+#    hostkey_verify: false
+#    src: "./config/{{inventory_hostname}}-ospf.txt"
+
+- name: OSPF V2 configuration
+  tags: [OSPF]
+  when: inventory_hostname=='RTR3' or inventory_hostname=='RTR4' or inventory_hostname=='RTR5' or inventory_hostname=='RTR6'
+  loop: "{{ ospf_networks }}"
+  cisco.ios.ios_ospfv2:
+    config:
+      processes:
+      - process_id: "{{ ospf.process_id }}"
+        network:
+        - address: "{{ item.network }}"
+          wildcard_bits: "{{ item.mask }}"
+          area: "{{ item.area }}"
+        router_id: "{{ospf_router_id}}"
+    state: merged
+  
+
+
+
+   
+
+    
+ 

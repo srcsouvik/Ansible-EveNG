@@ -1,0 +1,14 @@
+bgp1:
+    address_family:
+    -   afi: ipv4
+        neighbor:
+        -   activate: true
+            address: 198.51.100.2
+        -   activate: true
+            address: 203.0.113.5
+        network:
+        -   address: 192.0.2.0
+            mask: 255.255.254.0
+        -   address: 198.51.100.0
+            route_map: RMAP_1
+    as_number: '64496'

@@ -1,0 +1,26 @@
+---
+- name: Configure MyLabNetwork
+  hosts: all
+  connection: network_cli
+  gather_facts: false
+  become: yes
+
+  roles:
+   - hostname
+   - loopback
+   - Layer3_Interface_config
+   - Layer2_Interface_config
+   - enable_ospf
+   - enable_bgp
+   - enable_redis
+#   - config_backup
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+---
+- name: "Generate OSPF config"
+#  tags: [api, netconf, ospf]
+  template:
+    src: "files/ospf_template.j2"
+    dest: "./config/{{inventory_hostname}}-ospf.txt"
+- name: Push OSPF config to devices
+#  tags: [api, netconf, ospf]
+  debugger: on_failed
+  ios_config:
+    host: "{{inventory_hostname}}"
+    hostkey_verify: false
+    src: 

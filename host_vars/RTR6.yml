@@ -1,0 +1,31 @@
+---
+local_loopbacks:
+    - name: Loopback11
+      desc: Sample Network Route Injection
+      ip_address: 172.26.0.1/24
+#      prefix: 24
+    - name: Loopback12
+      desc: Sample Network Route Injection
+      ip_address: 172.26.1.1/24
+#      prefix: 24
+
+l3_fabric:
+    interfaces:
+        - name: FastEthernet0/1
+          desc: L3 Link to R4
+          ip_address: 172.16.0.22/30
+         # prefix: 30
+        - name: FastEthernet2/0
+          desc: L3 Link to R5
+          ip_address: 172.16.0.26/30
+ospf_router_id: 6.6.6.6
+ospf_networks:
+    - network: 172.16.0.0
+      mask: 0.0.0.255
+      area: 0
+    - network: 172.26.0.0
+      mask: 0.0.1.255
+      area: 0
+    - network: 6.6.6.6
+      mask: 0.0.0.0
+      area: 0

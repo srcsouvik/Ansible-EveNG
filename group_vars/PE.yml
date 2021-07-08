@@ -1,0 +1,3 @@
+# as_number: 65000
+bgp:
+  log_neighbor_changes: true

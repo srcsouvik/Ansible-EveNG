@@ -1,0 +1,29 @@
+---
+- name: BGP Example
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: configure global bgp as 64496
+    cisco.ios.ios_bgp:
+      config:
+        bgp_as: 65000
+        router_id: 192.0.2.1
+        log_neighbor_changes: true
+        neighbors:
+        - neighbor: 203.0.113.5
+          remote_as: 64511
+        - neighbor: 198.51.100.2
+          remote_as: 64498
+        networks:
+#        - prefix: 198.51.100.0
+#          route_map: RMAP_1
+        - prefix: 192.0.2.0
+          masklen: 23
+        address_family:
+        - afi: ipv4
+          safi: unicast
+          redistribute:
+          - protocol: ospf
+            id: 1
+            metric: 10
+      operation: override

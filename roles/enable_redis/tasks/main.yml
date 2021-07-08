@@ -1,0 +1,24 @@
+---
+# tasks file for roles/enable_bgp_to_ospf_redis
+- name: configure bgp to ospf redistribution
+  tags: [Redis]
+  cisco.ios.ios_config:
+    lines:
+    - redistribute bgp 65001 subnets
+    - redistribute connected
+    parents: router ospf 1
+  when: inventory_hostname=='RTR3' or inventory_hostname=='RTR4'
+- name: configure ospf to BGP redistribution
+  tags: [Redis]
+  cisco.ios.ios_bgp:
+    config:
+      bgp_as: "{{ as_number }}"
+      address_family:
+      - afi: ipv4
+        safi: unicast
+        redistribute:
+        - protocol: ospf
+          id: "{{ ospf.process_id}}"
+          metric: 10
+    operation: merge
+  when: inventory_hostname=='RTR3' or inventory_hostname=='RTR4'  

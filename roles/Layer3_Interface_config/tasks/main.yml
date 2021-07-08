@@ -1,0 +1,10 @@
+---
+# tasks file for ./roles/Layer3_Interface_config
+- name: Configure Layer 3 Interfaces
+  tags: [L3]
+  # Note: The "with_items" syntax has been replaced by "loop"
+  #  - https://docs.ansible.com/ansible/2.9/user_guide/playbooks_loops.html#with-items
+  loop: "{{ l3_fabric.interfaces }}"
+  ios_l3_interface:
+   name: "{{ item.name }}"
+   ipv4: "{{ item.ip_address }}"

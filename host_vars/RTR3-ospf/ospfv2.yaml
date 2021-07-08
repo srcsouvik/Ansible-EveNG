@@ -1,0 +1,17 @@
+ospfv2:
+    processes:
+    -   network:
+        -   address: 3.3.3.3
+            area: '0'
+            wildcard_bits: 0.0.0.0
+        -   address: 172.16.0.12
+            area: '0'
+            wildcard_bits: 0.0.0.3
+        -   address: 172.16.0.16
+            area: '0'
+            wildcard_bits: 0.0.0.3
+        -   address: 172.23.0.0
+            area: '0'
+            wildcard_bits: 0.0.1.255
+        process_id: 1
+        router_id: 3.3.3.3

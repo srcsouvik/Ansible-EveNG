@@ -1,0 +1,206 @@
+ansible_facts:
+    ansible_net_all_ipv4_addresses:
+    - 10.2.2.10
+    - 172.20.0.6
+    - 172.20.0.10
+    - 172.21.1.1
+    - 172.21.2.1
+    ansible_net_all_ipv6_addresses: []
+    ansible_net_api: cliconf
+    ansible_net_config: "!\n! Last configuration change at 20:33:56 UTC Sat Jun 5\
+        \ 2021 by cisco\n!\nversion 15.2\nservice timestamps debug datetime msec\n\
+        service timestamps log datetime msec\n!\nhostname R1-Ansible\n!\nboot-start-marker\n\
+        boot-end-marker\n!\n!\n!\nno aaa new-model\nno ip icmp rate-limit unreachable\n\
+        ip cef\n!\n!\n!\n!\n!\n!\nno ip domain lookup\nip domain name mylab.com\n\
+        no ipv6 cef\n!\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\n!\n\
+        !\nusername cisco privilege 15 password 0 cisco123\nusername ansible privilege\
+        \ 15 password 0 ansible\n!\n!\nip tcp synwait-time 5\nip ssh version 2\n!\
+        \ \n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\ninterface Loopback11\n description Sample\
+        \ Network Route Injection\n ip address 172.21.1.1 255.255.255.0\n!\ninterface\
+        \ Loopback12\n description Sample Network Route Injection\n ip address 172.21.2.1\
+        \ 255.255.255.0\n!\ninterface FastEthernet0/0\n ip address 10.2.2.10 255.255.255.0\n\
+        \ duplex full\n!\ninterface Ethernet1/0\n description L3 Link to R2\n ip address\
+        \ 172.20.0.6 255.255.255.252\n duplex full\n!\ninterface Ethernet1/1\n no\
+        \ ip address\n shutdown\n duplex full\n!\ninterface Ethernet1/2\n description\
+        \ L3 Link to R3\n ip address 172.20.0.10 255.255.255.252\n duplex full\n!\n\
+        interface Ethernet1/3\n no ip address\n shutdown\n duplex full\n!\ninterface\
+        \ Ethernet1/4\n no ip address\n shutdown\n duplex full\n!\ninterface Ethernet1/5\n\
+        \ no ip address\n shutdown\n duplex full\n!\ninterface Ethernet1/6\n no ip\
+        \ address\n shutdown\n duplex full\n!\ninterface Ethernet1/7\n no ip address\n\
+        \ shutdown\n duplex full\n!\nrouter ospf 1\n router-id 10.10.10.11\n network\
+        \ 172.20.0.0 0.0.0.255 area 0\n network 172.21.0.0 0.0.255.255 area 0\n network\
+        \ 192.168.1.1 0.0.0.0 area 0\n!\nip forward-protocol nd\n!\n!\nno ip http\
+        \ server\nno ip http secure-server\n!\n!\n!\n!\ncontrol-plane\n!\n!\nline\
+        \ con 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits\
+        \ 1\nline aux 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n\
+        \ stopbits 1\nline vty 0 4\n login local\n transport input all\nline vty 5\
+        \ 15\n login local\n transport input all\n!\n!\nend"
+    ansible_net_filesystems: []
+    ansible_net_filesystems_info: {}
+    ansible_net_gather_network_resources: []
+    ansible_net_gather_subset:
+    - default
+    - interfaces
+    - config
+    - hardware
+    ansible_net_hostname: R1-Ansible
+    ansible_net_image: tftp://255.255.255.255/unknown
+    ansible_net_interfaces:
+        Ethernet1/0:
+            bandwidth: 10000
+            description: L3 Link to R2
+            duplex: null
+            ipv4:
+            -   address: 172.20.0.6
+                subnet: '30'
+            lineprotocol: up
+            macaddress: ca01.1988.001c
+            mediatype: null
+            mtu: 1500
+            operstatus: up
+            type: AmdP2
+        Ethernet1/1:
+            bandwidth: 10000
+            description: null
+            duplex: null
+            ipv4: []
+            lineprotocol: down
+            macaddress: ca01.1988.001d
+            mediatype: null
+            mtu: 1500
+            operstatus: administratively down
+            type: AmdP2
+        Ethernet1/2:
+            bandwidth: 10000
+            description: L3 Link to R3
+            duplex: null
+            ipv4:
+            -   address: 172.20.0.10
+                subnet: '30'
+            lineprotocol: up
+            macaddress: ca01.1988.001e
+            mediatype: null
+            mtu: 1500
+            operstatus: up
+            type: AmdP2
+        Ethernet1/3:
+            bandwidth: 10000
+            description: null
+            duplex: null
+            ipv4: []
+            lineprotocol: down
+            macaddress: ca01.1988.001f
+            mediatype: null
+            mtu: 1500
+            operstatus: administratively down
+            type: AmdP2
+        Ethernet1/4:
+            bandwidth: 10000
+            description: null
+            duplex: null
+            ipv4: []
+            lineprotocol: down
+            macaddress: ca01.1988.0020
+            mediatype: null
+            mtu: 1500
+            operstatus: administratively down
+            type: AmdP2
+        Ethernet1/5:
+            bandwidth: 10000
+            description: null
+            duplex: null
+            ipv4: []
+            lineprotocol: down
+            macaddress: ca01.1988.0021
+            mediatype: null
+            mtu: 1500
+            operstatus: administratively down
+            type: AmdP2
+        Ethernet1/6:
+            bandwidth: 10000
+            description: null
+            duplex: null
+            ipv4: []
+            lineprotocol: down
+            macaddress: ca01.1988.0022
+            mediatype: null
+            mtu: 1500
+            operstatus: administratively down
+            type: AmdP2
+        Ethernet1/7:
+            bandwidth: 10000
+            description: null
+            duplex: null
+            ipv4: []
+            lineprotocol: down
+            macaddress: ca01.1988.0023
+            mediatype: null
+            mtu: 1500
+            operstatus: administratively down
+            type: AmdP2
+        FastEthernet0/0:
+            bandwidth: 100000
+            description: null
+            duplex: null
+            ipv4:
+            -   address: 10.2.2.10
+                subnet: '24'
+            lineprotocol: up
+            macaddress: ca01.1988.0000
+            mediatype: null
+            mtu: 1500
+            operstatus: up
+            type: DEC21140
+        Loopback11:
+            bandwidth: 8000000
+            description: Sample Network Route Injection
+            duplex: null
+            ipv4:
+            -   address: 172.21.1.1
+                subnet: '24'
+            lineprotocol: up
+            macaddress: null
+            mediatype: null
+            mtu: 1514
+            operstatus: up
+            type: null
+        Loopback12:
+            bandwidth: 8000000
+            description: Sample Network Route Injection
+            duplex: null
+            ipv4:
+            -   address: 172.21.2.1
+                subnet: '24'
+            lineprotocol: up
+            macaddress: null
+            mediatype: null
+            mtu: 1514
+            operstatus: up
+            type: null
+    ansible_net_iostype: IOS
+    ansible_net_memfree_mb: 334294.0
+    ansible_net_memtotal_mb: 387526.16796875
+    ansible_net_model: 7206VXR
+    ansible_net_neighbors:
+        Ethernet1/0:
+        -   host: R2-Ansible.mylab.com
+            platform: Cisco 7206VXR
+            port: Ethernet1/0
+        Ethernet1/2:
+        -   host: R3-Ansible.mylab.com
+            platform: Cisco 7206VXR
+            port: Ethernet1/2
+        FastEthernet0/0:
+        -   host: R3-Ansible.mylab.com
+            platform: Cisco 7206VXR
+            port: FastEthernet0/0
+        -   host: R2-Ansible.mylab.com
+            platform: Cisco 7206VXR
+            port: FastEthernet0/0.1
+    ansible_net_python_version: 3.8.5
+    ansible_net_serialnum: '4279256517'
+    ansible_net_system: ios
+    ansible_net_version: 15.2(4)S5
+    ansible_network_resources: {}
+changed: false
+failed: false

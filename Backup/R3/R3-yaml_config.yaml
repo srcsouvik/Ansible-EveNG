@@ -1,0 +1,203 @@
+changed: false
+failed: false
+stdout:
+- "Building configuration...\n\nCurrent configuration : 1975 bytes\n!\n! Last configuration\
+    \ change at 16:20:08 UTC Wed Jun 9 2021 by cisco\n!\nversion 15.2\nservice timestamps\
+    \ debug datetime msec\nservice timestamps log datetime msec\n!\nhostname R3-Ansible\n\
+    !\nboot-start-marker\nboot-end-marker\n!\n!\n!\nno aaa new-model\nno ip icmp rate-limit\
+    \ unreachable\nip cef\n!\n!\n!\n!\n!\n!\nno ip domain lookup\nip domain name mylab.com\n\
+    no ipv6 cef\n!\n!\nmultilink bundle-name authenticated\n!\n!\n!\n!\n!\n!\n!\n\
+    username cisco privilege 15 password 0 cisco123\nusername ansible privilege 15\
+    \ password 0 ansible\n!\n!\nip tcp synwait-time 5\nip ssh version 2\n! \n!\n!\n\
+    !\n!\n!\n!\n!\n!\n!\n!\n!\ninterface Loopback11\n description Sample Network Route\
+    \ Injection\n ip address 172.23.1.1 255.255.255.0\n!\ninterface Loopback12\n description\
+    \ Sample Network Route Injection\n ip address 172.23.2.1 255.255.255.0\n!\ninterface\
+    \ FastEthernet0/0\n ip address 10.2.2.30 255.255.255.0\n duplex full\n!\ninterface\
+    \ Ethernet1/0\n no ip address\n shutdown\n duplex full\n!\ninterface Ethernet1/1\n\
+    \ description L3 Link to R2\n ip address 172.20.0.2 255.255.255.252\n duplex full\n\
+    !\ninterface Ethernet1/2\n description L3 Link to R1\n ip address 172.20.0.9 255.255.255.252\n\
+    \ duplex full\n!\ninterface Ethernet1/3\n no ip address\n shutdown\n duplex full\n\
+    !\ninterface Ethernet1/4\n no ip address\n shutdown\n duplex full\n!\ninterface\
+    \ Ethernet1/5\n no ip address\n shutdown\n duplex full\n!\ninterface Ethernet1/6\n\
+    \ no ip address\n shutdown\n duplex full\n!\ninterface Ethernet1/7\n no ip address\n\
+    \ shutdown\n duplex full\n!\nrouter ospf 1\n router-id 10.10.10.13\n network 172.20.0.0\
+    \ 0.0.0.255 area 0\n network 172.23.0.0 0.0.255.255 area 0\n network 192.168.1.3\
+    \ 0.0.0.0 area 0\n!\nip forward-protocol nd\n!\n!\nip http server\nip http authentication\
+    \ local\nno ip http secure-server\n!\n!\n!\n!\ncontrol-plane\n!\n!\nline con 0\n\
+    \ exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits 1\nline\
+    \ aux 0\n exec-timeout 0 0\n privilege level 15\n logging synchronous\n stopbits\
+    \ 1\nline vty 0 4\n login local\n transport input all\nline vty 5 15\n login local\n\
+    \ transport input all\n!\n!\nend"
+- "Interface              IP-Address      OK? Method Status                Protocol\n\
+    FastEthernet0/0        10.2.2.30       YES NVRAM  up                    up   \
+    \   \nEthernet1/0            unassigned      YES NVRAM  administratively down\
+    \ down    \nEthernet1/1            172.20.0.2      YES manual up             \
+    \       up      \nEthernet1/2            172.20.0.9      YES manual up       \
+    \             up      \nEthernet1/3            unassigned      YES NVRAM  administratively\
+    \ down down    \nEthernet1/4            unassigned      YES NVRAM  administratively\
+    \ down down    \nEthernet1/5            unassigned      YES NVRAM  administratively\
+    \ down down    \nEthernet1/6            unassigned      YES NVRAM  administratively\
+    \ down down    \nEthernet1/7            unassigned      YES NVRAM  administratively\
+    \ down down    \nLoopback11             172.23.1.1      YES manual up        \
+    \            up      \nLoopback12             172.23.2.1      YES manual up  \
+    \                  up"
+stdout_lines:
+-   - Building configuration...
+    - ''
+    - 'Current configuration : 1975 bytes'
+    - '!'
+    - '! Last configuration change at 16:20:08 UTC Wed Jun 9 2021 by cisco'
+    - '!'
+    - version 15.2
+    - service timestamps debug datetime msec
+    - service timestamps log datetime msec
+    - '!'
+    - hostname R3-Ansible
+    - '!'
+    - boot-start-marker
+    - boot-end-marker
+    - '!'
+    - '!'
+    - '!'
+    - no aaa new-model
+    - no ip icmp rate-limit unreachable
+    - ip cef
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - no ip domain lookup
+    - ip domain name mylab.com
+    - no ipv6 cef
+    - '!'
+    - '!'
+    - multilink bundle-name authenticated
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - username cisco privilege 15 password 0 cisco123
+    - username ansible privilege 15 password 0 ansible
+    - '!'
+    - '!'
+    - ip tcp synwait-time 5
+    - ip ssh version 2
+    - '! '
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - interface Loopback11
+    - ' description Sample Network Route Injection'
+    - ' ip address 172.23.1.1 255.255.255.0'
+    - '!'
+    - interface Loopback12
+    - ' description Sample Network Route Injection'
+    - ' ip address 172.23.2.1 255.255.255.0'
+    - '!'
+    - interface FastEthernet0/0
+    - ' ip address 10.2.2.30 255.255.255.0'
+    - ' duplex full'
+    - '!'
+    - interface Ethernet1/0
+    - ' no ip address'
+    - ' shutdown'
+    - ' duplex full'
+    - '!'
+    - interface Ethernet1/1
+    - ' description L3 Link to R2'
+    - ' ip address 172.20.0.2 255.255.255.252'
+    - ' duplex full'
+    - '!'
+    - interface Ethernet1/2
+    - ' description L3 Link to R1'
+    - ' ip address 172.20.0.9 255.255.255.252'
+    - ' duplex full'
+    - '!'
+    - interface Ethernet1/3
+    - ' no ip address'
+    - ' shutdown'
+    - ' duplex full'
+    - '!'
+    - interface Ethernet1/4
+    - ' no ip address'
+    - ' shutdown'
+    - ' duplex full'
+    - '!'
+    - interface Ethernet1/5
+    - ' no ip address'
+    - ' shutdown'
+    - ' duplex full'
+    - '!'
+    - interface Ethernet1/6
+    - ' no ip address'
+    - ' shutdown'
+    - ' duplex full'
+    - '!'
+    - interface Ethernet1/7
+    - ' no ip address'
+    - ' shutdown'
+    - ' duplex full'
+    - '!'
+    - router ospf 1
+    - ' router-id 10.10.10.13'
+    - ' network 172.20.0.0 0.0.0.255 area 0'
+    - ' network 172.23.0.0 0.0.255.255 area 0'
+    - ' network 192.168.1.3 0.0.0.0 area 0'
+    - '!'
+    - ip forward-protocol nd
+    - '!'
+    - '!'
+    - ip http server
+    - ip http authentication local
+    - no ip http secure-server
+    - '!'
+    - '!'
+    - '!'
+    - '!'
+    - control-plane
+    - '!'
+    - '!'
+    - line con 0
+    - ' exec-timeout 0 0'
+    - ' privilege level 15'
+    - ' logging synchronous'
+    - ' stopbits 1'
+    - line aux 0
+    - ' exec-timeout 0 0'
+    - ' privilege level 15'
+    - ' logging synchronous'
+    - ' stopbits 1'
+    - line vty 0 4
+    - ' login local'
+    - ' transport input all'
+    - line vty 5 15
+    - ' login local'
+    - ' transport input all'
+    - '!'
+    - '!'
+    - end
+-   - Interface              IP-Address      OK? Method Status                Protocol
+    - 'FastEthernet0/0        10.2.2.30       YES NVRAM  up                    up      '
+    - 'Ethernet1/0            unassigned      YES NVRAM  administratively down down    '
+    - 'Ethernet1/1            172.20.0.2      YES manual up                    up      '
+    - 'Ethernet1/2            172.20.0.9      YES manual up                    up      '
+    - 'Ethernet1/3            unassigned      YES NVRAM  administratively down down    '
+    - 'Ethernet1/4            unassigned      YES NVRAM  administratively down down    '
+    - 'Ethernet1/5            unassigned      YES NVRAM  administratively down down    '
+    - 'Ethernet1/6            unassigned      YES NVRAM  administratively down down    '
+    - 'Ethernet1/7            unassigned      YES NVRAM  administratively down down    '
+    - 'Loopback11             172.23.1.1      YES manual up                    up      '
+    - Loopback12             172.23.2.1      YES manual up                    up

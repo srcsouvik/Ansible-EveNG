@@ -1,0 +1,4 @@
+ospf:
+ process_id: 1
+ area: 0
+ 

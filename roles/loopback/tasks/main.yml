@@ -1,0 +1,9 @@
+
+# tasks file for ./loopback
+---
+- name: Configuring Loopback Interfaces
+  tags: [loop]
+  loop: "{{ local_loopbacks }}"
+  ios_l3_interface:
+   name: "{{ item.name }}"
+   ipv4: "{{ item.ip_address }}"

@@ -1,0 +1,38 @@
+---
+local_loopbacks:
+    - name: Loopback11
+      desc: Sample Network Route Injection
+      ip_address: 172.22.0.1/24
+#      prefix: 24
+    - name: Loopback12
+      desc: Sample Network Route Injection
+      ip_address: 172.22.1.1/24
+#      prefix: 24
+    - name: Loopback10
+      desc: Sample Network Route Injection
+      ip_address: 10.10.10.20/32
+
+l3_fabric:
+    interfaces:
+        - name: Ethernet1/0
+          desc: L3 Link to R4
+          ip_address: 172.16.0.9/30
+         # prefix: 30
+        - name: Ethernet1/1
+          desc: L3 Link to R1
+          ip_address: 172.16.0.2/30
+         # prefix: 30
+as_number: 65000
+router_id: 192.168.2.2
+neighbor:
+-   address: 172.16.0.1
+    remote_as: 65000
+-   address: 172.16.0.10
+    remote_as: 65001
+networks:
+- prefix: 172.22.0.1
+  masklen: 32
+- prefix: 172.22.1.1
+  masklen: 32
+- prefix: 10.10.10.20
+  masklen: 32

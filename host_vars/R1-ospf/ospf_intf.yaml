@@ -1,0 +1,12 @@
+ospf_intf:
+-   name: Loopback11
+-   name: Loopback12
+-   name: FastEthernet0/0
+-   name: Ethernet1/0
+-   name: Ethernet1/1
+-   name: Ethernet1/2
+-   name: Ethernet1/3
+-   name: Ethernet1/4
+-   name: Ethernet1/5
+-   name: Ethernet1/6
+-   name: Ethernet1/7

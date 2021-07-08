@@ -1,0 +1,15 @@
+---
+# tasks file for ./roles/hostname
+- name: Getting hostname from IOS devices
+  ios_facts:
+    gather_subset: all
+
+- name: Displaying the hostname
+  debug:
+    msg: "The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}"
+
+- name: Changing the hosname of IOS Devices
+  ios_config:
+   backup: no
+   lines:
+    - hostname {{ inventory_hostname }}-Ansible

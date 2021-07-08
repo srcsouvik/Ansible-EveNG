@@ -1,0 +1,19 @@
+---
+# tasks file for ./roles/Layer2_Interface_config
+- name: Enable Interfaces
+  tags: [L2]
+  loop: "{{ l3_fabric.interfaces }}"
+  ios_interfaces:
+   config:
+    - name: "{{ item.name }}"
+      description: "{{ item.desc }}"
+      enabled: true
+#      speed: 100
+      duplex: half
+- name: Configure Loopback Interface description
+  loop: "{{ local_loopbacks }}"
+  ios_interfaces:
+   config:
+    - name: "{{ item.name }}"
+      description: "{{ item.desc }}"
+      enabled: true

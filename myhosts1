@@ -1,0 +1,20 @@
+[PE]
+RTR1 ansible_host=192.168.110.51 ansible_python_interpreter="/usr/bin/env python"
+RTR2 ansible_host=192.168.110.52 ansible_python_interpreter="/usr/bin/env python"
+[CE]
+RTR3 ansible_host=192.168.110.53 ansible_python_interpreter="/usr/bin/env python"
+RTR4 ansible_host=192.168.110.54 ansible_python_interpreter="/usr/bin/env python"
+[Core]
+Core-SW1 ansible_host=192.168.110.50 ansible_python_interpreter="/usr/bin/env python"
+
+
+[Lab2:children]
+PE
+CE
+Core
+
+[Lab2:vars]
+ansible_connection=network_cli
+ansible_network_os=ios
+ansible_user=cisco
+ansible_password=cisco123

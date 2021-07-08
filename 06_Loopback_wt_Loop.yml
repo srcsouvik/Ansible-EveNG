@@ -1,0 +1,12 @@
+---
+- name: Configure Loopback Networks on Each router
+  hosts: all
+  gather_facts: False
+  connection: network_cli
+
+  tasks:
+    - name: Create Loopback Interface
+      loop: "{{ local_loopbacks }}"
+      ios_l3_interface:
+        name: "{{ item.name }}"
+        

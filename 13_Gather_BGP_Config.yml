@@ -1,0 +1,28 @@
+
+---
+- name: convert bgp to yaml structure data
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Create Inventory if not exists
+    file:
+     path: "{{ inventory_dir }}/host_vars/{{ inventory_hostname }}-bgp"
+     state: directory
+  - name: Gather listed global BGP with provided configurations
+    cisco.ios.ios_bgp_global:
+     config:
+     state: gathered
+    register: bgp
+  - name: Gather listed AF BGP with provided configurations
+    cisco.ios.ios_bgp_address_family:
+      config:
+      state: gathered
+    register: bgp1
+  - name: Write the bgp config to a file
+    copy: 
+      content: "{{ {'bgp' : bgp['gathered']} | to_nice_yaml }}"
+      dest: "{{ inventory_dir }}/host_vars/{{ inventory_hostname }}-bgp/{{ inventory_hostname }}-bgp.yaml"
+  - name: Write the bgp additional config to a file
+    copy: 
+      content: "{{ {'bgp1' : bgp1['gathered']} | to_nice_yaml }}"
+      dest: "{{ inventory_dir }}/host_vars/{{ inventory_hostname }}-bgp/{{ inventory_hostname }}-bgp1.yaml"

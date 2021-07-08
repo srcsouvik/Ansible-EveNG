@@ -1,0 +1,27 @@
+---
+- name: Configure Loopback Networks on Each router
+  hosts: all
+  gather_facts: False
+  #vars_files:
+  # - ./host_vars/R1.yaml
+  # Ansible added new connection options for networking devices
+  # to replace connection: local
+  # Now connection: network_cli or httpapi are recommended
+  #   Doc: https://docs.ansible.com/ansible/2.9/network/user_guide/platform_nxos.html
+  connection: network_cli
+
+  tasks:
+    - name: Create L3_Interfaces
+      # Note: The "with_items" syntax has been replaced by "loop"
+      #  - https://docs.ansible.com/ansible/2.9/user_guide/playbooks_loops.html#with-items
+      loop: "{{ l3_fabric.interfaces }}"
+      ios_l3_interface:
+        name: "{{ item.name }}"
+        ipv4: "{{ item.ip_address }}"
+    - name: Enable the Interfaces
+      loop: "{{ l3_fabric.interfaces}}"
+      ios_interfaces:
+       config:
+        - name: "{{ item.name }}"
+          description: "{{ item.desc }}"
+          enabled: true

@@ -1,0 +1,17 @@
+---
+- name: gather running config from routers
+  hosts: all
+  gather_facts: false
+ 
+  tasks:
+  - name: Gather running-config
+    ios_command:
+      commands:
+      - show run
+      - show ip int brief
+    register: yaml_config
+  - name: Write the facts in yaml file
+    copy: 
+      content: "{{ yaml_config | to_nice_yaml }}"
+      dest: "{{ inventory_dir }}/Backup/{{ inventory_hostname }}/{{ inventory_hostname }}-yaml_config.yaml"
+

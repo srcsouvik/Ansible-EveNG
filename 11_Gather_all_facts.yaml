@@ -1,0 +1,18 @@
+---
+- name: gather information from routers
+  hosts: all
+  gather_facts: false
+ 
+  tasks:
+  - name: Gather legacy and resource facts
+    ios_facts:
+     gather_subset: all
+  #   gather_network_resources: all
+    register: facts
+  - debug:
+     msg: "{{facts}}"
+  - name: Write the facts in yaml file
+    copy: 
+      content: "{{ facts | to_nice_yaml }}"
+      dest: "{{ inventory_dir }}/Backup/{{ inventory_hostname }}/{{ inventory_hostname }}-facts.yaml"
+

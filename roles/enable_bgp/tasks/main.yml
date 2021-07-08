@@ -1,0 +1,31 @@
+---
+# tasks file for roles/enable_bgp
+- name: Enable BGP and Neighbor
+  tags: [BGP]
+  when: inventory_hostname=='RTR1' or inventory_hostname=='RTR2' or inventory_hostname=='RTR3' or inventory_hostname=='RTR4'
+  loop: "{{ neighbor }}"
+  cisco.ios.ios_bgp:
+    config:
+      bgp_as: "{{ as_number }}"
+      router_id: "{{ router_id }}"
+      log_neighbor_changes: true
+      neighbors:
+      - neighbor: "{{ item.address }}"
+        remote_as: "{{ item.remote_as }}"
+    operation: merge
+- name: Advertise Networks
+  tags: [BGP]
+  when: inventory_hostname=='RTR1' or inventory_hostname=='RTR2' 
+  loop: "{{ networks }}"
+  cisco.ios.ios_bgp:
+    config:
+      bgp_as: "{{ as_number }}"
+      networks:
+      - prefix: "{{ item.prefix }}"
+        masklen: "{{ item.masklen }}"
+      address_family:
+      - afi: ipv4
+        safi: unicast
+        redistribute: 
+        - protocol: connected
+    operation: merge
